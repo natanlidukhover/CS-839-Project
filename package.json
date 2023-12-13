@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "apache-arrow": "^14.0.1"
+  }
+}

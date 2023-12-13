@@ -1,0 +1,30 @@
+SELECT
+    SUM(l_quantity) as SUM_QTY,
+    AVG(l_quantity) as AVG_QTY,
+    SUM(l_extendedprice) as SUM_PRICE,
+    AVG(l_extendedprice) as AVG_PRICE,
+    SUM(l_tax) as SUM_TAX,
+    AVG(l_tax) as AVG_TAX,
+    SUM(l_discount) as SUM_DISCOUNT,
+    AVG(l_discount) as AVG_DISCOUNT,
+    SUM(l_extendedprice * (1 + l_tax)) as SUM_PRICE_TAX,
+    AVG(l_extendedprice * (1 + l_tax)) as AVG_PRICE_TAX,
+    SUM(l_extendedprice * (1 - l_discount)) as SUM_SUBTOTAL_DISCOUNT,
+    AVG(l_extendedprice * (1 - l_discount)) as AVG_SUBTOTAL_DISCOUNT,
+    SUM(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as SUM_TOTAL,
+    AVG(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as AVG_TOTAL
+FROM
+    'dataset/lineitem.parquet'
+WHERE
+    l_shipdate <= date '2000-12-27'
+AND
+    l_commitdate <= date '2000-12-27'
+OR
+    l_receiptdate >= date '2000-12-27'
+GROUP BY
+    l_shipmode,
+    l_linestatus
+ORDER BY
+    l_shipmode,
+    l_linestatus
+DESC;

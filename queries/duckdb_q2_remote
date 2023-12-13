@@ -1,0 +1,10 @@
+SELECT
+    MD5(
+        CONCAT(
+            l_extendedprice, l_shipdate, l_comment, l_suppkey
+        )
+    ) AS MD5_HASH
+FROM
+    'https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet'
+ORDER BY MD5_HASH
+ASC;

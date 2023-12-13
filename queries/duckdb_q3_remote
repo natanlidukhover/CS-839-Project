@@ -1,0 +1,7 @@
+SELECT
+    *
+FROM
+    'https://shell.duckdb.org/data/tpch/0_01/parquet/orders.parquet' o
+JOIN
+    'https://shell.duckdb.org/data/tpch/0_01/parquet/customer.parquet' c
+ON o.o_custkey = c.c_custkey;

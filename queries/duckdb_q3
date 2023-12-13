@@ -1,0 +1,7 @@
+SELECT
+    *
+FROM
+    'dataset/orders.parquet' o
+JOIN
+    'dataset/customer.parquet' c
+ON o.o_custkey = c.c_custkey;

@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=http://localhost:8080/
+HostUrl=https://shell.duckdb.org/data/tpch/0_01/parquet/lineitem.parquet

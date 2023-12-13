@@ -1,0 +1,13 @@
+SELECT
+    MD5(
+        CONCAT(
+            o_totalprice, o_clerk, c_nationkey, c_comment
+        )
+    ) AS MD5_HASH
+FROM
+    'dataset/orders.parquet' o
+JOIN
+    'dataset/customer.parquet' c
+ON o.o_custkey = c.c_custkey
+ORDER BY MD5_HASH
+ASC;
